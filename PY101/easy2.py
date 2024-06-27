@@ -5,17 +5,17 @@ will produce a person's name. The dictionary will contain two keys, "title" and
 that uses the person's full name, and mentions the person's title.
 '''
 
-def greetings(list,dict):
-    name = ' '.join(list)
-    return f'Hello, {name}! Nice to have a {dict['title']} {dict['occupation']} around.'
+# def greetings(list,dict):
+#     name = ' '.join(list)
+#     return f'Hello, {name}! Nice to have a {dict['title']} {dict['occupation']} around.'
 
-greeting = greetings(
-    ["John", "Q", "Doe"],
-    {"title": "Master", "occupation": "Plumber"},
-)
+# greeting = greetings(
+#     ["John", "Q", "Doe"],
+#     {"title": "Master", "occupation": "Plumber"},
+# )
 
 
-print(greeting)
+# print(greeting)
 # Hello, John Q Doe! Nice to have a Master Plumber around.
 
 # def greeting_yell():
@@ -168,23 +168,83 @@ def madlibs():
     print(f"The {noun} {adverb} {verb}s up to Joe's {adjective} turtle.")
 
 def twice(int:int):
-    string = str(int)
+    def isDouble(int):
+        stringified = str(int)
+        length = len(stringified)
+        if length % 2 == 1:
+            return False
+        middle = length // 2
+        part1 = stringified[0:middle]
+        part2 = stringified[middle:]
+       # print(part1,part2)
+        if(part1 != part2):
+            return False
+        return True
     
-    if len(string) % 2 !=0:
-        return int*2
-    
-    left = string[0:)]
-    right = string[len(string)/2]
+    if isDouble(int):
+        return int
+    return int * 2
 
-    print(left,right)
-    
-    return int
 
-print(twice(37) == 74)                  # True
-print(twice(44) == 44)                  # True
-print(twice(334433) == 668866)          # True
-print(twice(444) == 888)                # True
-print(twice(107) == 214)                # True
-print(twice(103103) == 103103)          # True
-print(twice(3333) == 3333)              # True
-print(twice(7676) == 7676)    
+# print(twice(37) == 74)                  # True
+# print(twice(44) == 44)                  # True
+# print(twice(334433) == 668866)          # True
+# print(twice(444) == 888)                # True
+# print(twice(107) == 214)                # True
+# print(twice(103103) == 103103)          # True
+# print(twice(3333) == 3333)              # True
+# print(twice(7676) == 7676)    
+
+def get_grade(grade1,grade2,grade3):
+    average = (grade1 + grade2 + grade3) / 3
+    if 90 <= average <= 100:
+        return 'A'
+    if 80 <= average < 90:
+        return 'B'
+    if 70 <= average < 80:
+        return 'C'
+    if 60 <= average < 70:
+        return 'D'
+    return 'F'
+
+def clean_up(string):
+    cleaned_string = ''
+    for i in range(len(string)):
+        if str.isalpha(string[i]):
+           cleaned_string = cleaned_string+string[i]
+           continue
+        else:
+            if i is not 0 and not str.isalpha(string[i-1]):
+                continue
+            cleaned_string = cleaned_string + ' '
+    return cleaned_string
+        
+
+print(clean_up("---what's my +*& line?") == " what s my line ")
+import math;
+
+def century(year):
+    def get_century_string():
+        century = math.ceil(year/100)
+        return str(century)
+    century_string = get_century_string()
+    last_number = century_string[-1]
+    if last_number in ['0','1','4','5','6','7','8','9']:
+        century_string += 'th'
+    elif last_number is '3':
+        century_string += 'rd'
+    elif last_number is '2':
+        century_string += 'nd'
+    elif last_number is '1':
+        century_string += 'st'
+    return century_string
+
+print(century(2000) == "20th")          # True
+print(century(2001) == "21st")          # True
+print(century(1965) == "20th")          # True
+print(century(256) == "3rd")            # True
+print(century(5) == "1st")              # True
+print(century(10103) == "102nd")        # True
+print(century(1052))          # True
+print(century(1127))          # True
+print(century(11201))

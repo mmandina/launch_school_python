@@ -4,7 +4,6 @@ def flintstones_rock():
 
 flintstones_rock()
 
-
 def factors(number):
     divisor = number
     result = []
@@ -15,3 +14,4 @@ def factors(number):
     return result
 
 print(factors(20))
+
